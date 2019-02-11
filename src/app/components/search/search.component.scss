@@ -1,0 +1,234 @@
+$blue: #2196F3;
+$transition: 300ms ease;
+.search-block {
+  display: flex;
+  flex-direction: row;
+  //align-content: space-between;
+  .search-block__input-wrapper {
+    position: relative;
+    width: 85%;
+    max-width: 500px;
+    margin: 50px 50px;
+
+    .query {
+      height: 50px;
+      width: 100%;
+      display: block;
+      padding: 0 25px;
+      border: 1px solid #ccc;
+
+      &:focus {
+        outline: none;
+        border: 1px solid $blue;
+
+        transition: $transition;
+      }
+
+      transition: $transition;
+    }
+
+    .loader {
+      height: 5px;
+      padding: 0;
+      background: white;
+      margin: 0 auto;
+      position: relative;
+
+      &:before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        background: $blue;
+        width: 0%;
+        height: 5px;
+
+        transition: $transition;
+      }
+
+      &.done {
+        &:before {
+          width: 100%;
+        }
+      }
+    }
+
+    .clear {
+      position: absolute;
+      top: 0;
+      right: 0;
+      height: 50px;
+      width: 30px;
+      opacity: 1;
+
+      &:before {
+        content: '\00d7';
+        color: $blue;
+        position: absolute;
+        top: 0;
+        left: 0;
+        text-align: center;
+        width: 100%;
+        line-height: 50px;
+
+        transition: $transition;
+      }
+
+      &:hover {
+        &:before {
+          cursor: pointer;
+        }
+      }
+    }
+
+    &.active {
+      margin-top: -55px;
+
+      .query {
+        height: 30px;
+        margin-top: 0px;
+
+        transition: $transition;
+      }
+
+      .clear {
+        height: 30px;
+
+        &:before {
+          line-height: 30px;
+        }
+      }
+    }
+
+    &.empty {
+      .clear {
+        opacity: 0;
+      }
+    }
+
+    transition: $transition;
+  }
+  .search-block__btn-block {
+    width: 10%;
+    *, *:after, *:before {
+      -webkit-box-sizing: border-box;
+      -moz-box-sizing: border-box;
+      box-sizing: border-box;
+    }
+    button{
+      display: inline-block;
+      position: relative;
+      background: none;
+      border: none;
+      color: #fff;
+      font-size: 16px;
+      height: 50px;
+      cursor: pointer;
+      margin: 50px 30px;
+      background: #F54785;
+      outline: none;
+    }
+    span{
+      display: block;
+      padding: 10px 80px;
+      text-transform: uppercase;
+    }
+    button::before, button::after{
+      content:"";
+      width: 0;
+      height: 2px;
+      position: absolute;
+      transition: all 0.2s linear;
+      background: #fff;
+    }
+
+    span::before, span::after{
+      content:"";
+      width:2px;
+      height:0;
+      position: absolute;
+      transition: all 0.2s linear;
+      background: #fff;
+    }
+    button:hover::before, button:hover::after{
+      width: 100%;
+    }
+    button:hover span::before, button:hover span::after{
+      height: 100%;
+    }
+    .btn::before, .btn::after{
+      transition-delay: 0s;
+    }
+    .btn span::before, .btn span::after{
+      transition-delay: 0.2s;
+    }
+    .btn::before{
+      right: 0;
+      top: 0;
+    }
+    .btn::after{
+      left: 0;
+      bottom: 0;
+    }
+    .btn span::before{
+      left: 0;
+      top: 0;
+    }
+    .btn span::after{
+      right: 0;
+      bottom: 0;
+    }
+    .btn:hover::before, .btn:hover::after{
+      transition-delay: 0.2s;
+    }
+    .btn:hover span::before, .btn:hover span::after{
+      transition-delay: 0s;
+    }
+
+  }
+}
+.gifs-block {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-start;
+  width: 100%;
+  .gifs-block__gifs {
+    //margin: auto;
+    width: 200px;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-content: flex-start;
+    align-items: flex-start;
+    padding: 5px;
+    .gifs-block__gifs__one-gif {
+      align-items: flex-start;
+      height: 250px;
+      margin: 5px 0 5px 0;
+      cursor: pointer;
+      outline: none;
+      img {
+        max-width: 200px;
+        max-height: 200px;
+      }
+    }
+    .fav {
+      cursor: pointer;
+      outline: none;
+      z-index: 999;
+      position: absolute;
+      margin-top: -30px;
+      i {
+        color: white;
+        opacity: 0.6;
+      }
+
+    }
+    .activated {
+      i {
+        color: #F54785 !important;
+        opacity: 1;
+      }
+    }
+  }
+}

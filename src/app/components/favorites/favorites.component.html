@@ -2,8 +2,8 @@
     <div>
       <h3>Favorite gifs</h3>
       <div class="gifs-block">
-        <div *ngFor="let gif of favGifs;" class="gifs">
-          <div class="one-gif">
+        <div *ngFor="let gif of favGifs;" class="gifs-block__gifs">
+          <div class="gifs-block__gifs__one-gif">
             <div class="img-gif">
               <a routerLink="/details/{{gif?.id}}">
                 <img [src]="gif.images.fixed_width.webp">

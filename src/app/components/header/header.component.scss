@@ -1,6 +1,15 @@
 .header {
-  h2{
-    color: #F54785;
+  .navbar-item{
+    border: 1px solid #F54785;
+    width: 180px;
+    h2{
+      color: #F54785;
+      text-align: center;
+      span{
+        color: #191A1A;
+      }
+    }
   }
+
 }
 

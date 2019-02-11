@@ -1,8 +1,17 @@
-<div class="form-group">
-  <input #file type="file" accept='image/*' (change)="preview(file.files)" />
-  <img [src]="imgURL" height="200" *ngIf="imgURL">
-  <div *ngFor="let file of files">
-    <img [src]="file">
+<div>
+  <div class="upload-block">
+    <div class="upload-block__top-gif">
+      <img src="assets/giphy.gif">
+    </div>
+    <div class="upload-block__upload">
+      <label id="#bb"> Upload your gif!
+        <input #file type="file" accept='image/*' (change)="preview(file.files)" />
+      </label>
+      <div class="upload-block__result-prev">
+        <img [src]="imgURL" *ngIf="imgURL">
+      </div>
+    </div>
   </div>
+
 
 </div>

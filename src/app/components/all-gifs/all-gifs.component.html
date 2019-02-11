@@ -1,47 +1,21 @@
-<div >
-  <div class="search-block">
-    <div class="input-wrapper empty">
-      <label>
-        <input [(ngModel)]="searchText" type="text" class="query"/>
-      </label>
+<div>
+  <app-search></app-search>
+  <div>
+    <h3>Trending gifs</h3>
+    <div class="gifs-block">
+      <div *ngFor="let gif of allGifs;" class="gifs-block__gifs">
+        <div class="gifs-block__gifs__one-gif">
+            <a routerLink="/details/{{gif?.id}}">
+              <img [src]="gif.images.fixed_width.webp" style="position: relative; z-index: 1;">
+            </a>
+          <div class="fav" *ngIf="gif" (click)="addToFav(gif)" [ngClass]="{'activated' : gif.active}">
+            <i class="material-icons">favorite</i>
+          </div>
+        </div>
+      </div>
     </div>
     <div class="btn-block">
-      <button class="btn" (click)="searchGifs(searchText)"><span>Search</span></button>
-    </div>
-  </div>
-
-  <div>
-    <div *ngIf="allSearchGifs.length">
-      <h3>Result</h3>
-      <div class="gifs-block">
-        <div *ngFor="let gif of allSearchGifs" class="gifs">
-          <div class="one-gif">
-            <div class="img-gif">
-              <a routerLink="/details/{{gif?.id}}">
-                <img [src]="gif.images.fixed_width.webp">
-              </a>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <div>
-      <h3>Trending gifs</h3>
-      <div class="gifs-block">
-        <div *ngFor="let gif of allGifs;" class="gifs">
-          <div class="one-gif">
-            <div class="img-gif">
-              <a routerLink="/details/{{gif?.id}}">
-                <img [src]="gif.images.fixed_width.webp">
-              </a>
-            </div>
-          </div>
-          <div class="fav" (click)="addToFav(gif)" [ngClass]="{'activated' : gif.active}">
-            <i class="material-icons" >favorite</i>
-          </div>
-        </div>
-      </div>
+      <button class="btn" (click)="getMoreGifs()"><span>Get more!</span></button>
     </div>
   </div>
 </div>

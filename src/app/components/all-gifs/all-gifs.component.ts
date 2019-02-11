@@ -10,21 +10,20 @@ import {LocalStorageService} from 'ngx-store';
 export class MainListComponent implements OnInit {
   public allGifs: Array<any> = [];
   public result: any;
-  public searchResult: any;
-  public searchText: string;
-  public allSearchGifs: Array<any> = [];
   public favsArray: Array<any> = [];
+  public offset: number;
 
   constructor(private gifService: GifService, private localStorageService: LocalStorageService) {
+    this.offset = 0;
   }
 
   ngOnInit() {
-    this.getGifs();
+    this.getGifs(this.offset);
 
   }
 
-  getGifs() {
-    this.gifService.getTrendingGifs().subscribe(
+  getGifs(more: number) {
+    this.gifService.getTrendingGifs(more).subscribe(
       (data) => {
         this.result = data;
         this.allGifs = this.allGifs.concat(this.result.data);
@@ -32,15 +31,10 @@ export class MainListComponent implements OnInit {
     );
   }
 
-  searchGifs(searchText) {
-    this.gifService.searchGifs(searchText).subscribe(
-      (data) => {
-        this.searchResult = data;
-        this.allSearchGifs = this.allSearchGifs.concat(this.searchResult.data);
-      }
-    );
+  getMoreGifs() {
+    this.offset += 25;
+    this.getGifs(this.offset);
   }
-
 
   addToFav(gif) {
     let isAbsent = this.favsArray.some(function (item) {

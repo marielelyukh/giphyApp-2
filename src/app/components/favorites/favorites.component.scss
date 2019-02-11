@@ -4,29 +4,26 @@ h3 {
 .gifs-block {
   display: flex;
   flex-wrap: wrap;
-  align-items: center;
+  align-items: flex-start;
   width: 100%;
-  .gifs{
-    margin: auto;
+  .gifs-block__gifs{
+    //margin: auto;
     width: 200px;
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
-    align-content: space-around;
-    align-items: center;
+    align-content: flex-start;
+    align-items: flex-start;
     padding: 5px;
-    .one-gif {
-      align-items: center;
+    .gifs-block__gifs__one-gif {
+      align-items: flex-start;
       height: 220px;
       margin: 5px 0 5px 0;
       cursor: pointer;
       outline: none;
-      .img-gif{
-        text-align: center;
-        img {
-          //max-width: 200px;
-          //max-height: 200px;
-        }
+      img {
+        max-width: 200px;
+        max-height: 200px;
       }
     }
   }

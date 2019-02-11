@@ -11,8 +11,8 @@ export class GifService {
   constructor(public http: HttpClient) {
   }
 
-  getTrendingGifs(): Observable<any> {
-    return this.http.get(this.giphyUrl + '/trending?api_key=' + this.apiKey);
+  getTrendingGifs(next: number): Observable<any> {
+    return this.http.get(this.giphyUrl + '/trending?api_key=' + this.apiKey + '&offset=' + next);
   }
   searchGifs(text): Observable<any> {
     return this.http.get(this.giphyUrl + '/search?api_key=' + this.apiKey + '&q=' + text);
