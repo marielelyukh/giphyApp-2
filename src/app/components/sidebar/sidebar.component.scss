@@ -1,0 +1,24 @@
+nav {
+  background: #191a1a;
+  height: 100%;
+
+  ul {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+
+    li {
+
+      a {
+        color: #fff;
+        padding: 20px;
+        display: block;
+      }
+
+      .activated {
+        color: #F54785;
+      }
+    }
+  }
+
+}

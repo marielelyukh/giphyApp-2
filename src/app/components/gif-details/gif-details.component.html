@@ -1,0 +1,12 @@
+<div>
+  <div class="btn-block">
+    <button class="btn" [routerLink]="['/main-list']"><span>Go back</span></button>
+  </div>
+  <div *ngIf="one_gif" class="gif-block">
+    <div class="gif-block__gif">
+      <img  [src]="one_gif.images.original.webp">
+      <h3>{{one_gif.title}}</h3>
+      <h5>{{one_gif.trending_datetime}}</h5>
+    </div>
+  </div>
+</div>

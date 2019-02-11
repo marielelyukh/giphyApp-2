@@ -1,0 +1,47 @@
+<div >
+  <div class="search-block">
+    <div class="input-wrapper empty">
+      <label>
+        <input [(ngModel)]="searchText" type="text" class="query"/>
+      </label>
+    </div>
+    <div class="btn-block">
+      <button class="btn" (click)="searchGifs(searchText)"><span>Search</span></button>
+    </div>
+  </div>
+
+  <div>
+    <div *ngIf="allSearchGifs.length">
+      <h3>Result</h3>
+      <div class="gifs-block">
+        <div *ngFor="let gif of allSearchGifs" class="gifs">
+          <div class="one-gif">
+            <div class="img-gif">
+              <a routerLink="/details/{{gif?.id}}">
+                <img [src]="gif.images.fixed_width.webp">
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div>
+      <h3>Trending gifs</h3>
+      <div class="gifs-block">
+        <div *ngFor="let gif of allGifs;" class="gifs">
+          <div class="one-gif">
+            <div class="img-gif">
+              <a routerLink="/details/{{gif?.id}}">
+                <img [src]="gif.images.fixed_width.webp">
+              </a>
+            </div>
+          </div>
+          <div class="fav" (click)="addToFav(gif)" [ngClass]="{'activated' : gif.active}">
+            <i class="material-icons" >favorite</i>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

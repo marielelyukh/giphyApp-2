@@ -1,0 +1,33 @@
+h3 {
+  color: #F54785;;
+}
+.gifs-block {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  width: 100%;
+  .gifs{
+    margin: auto;
+    width: 200px;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-content: space-around;
+    align-items: center;
+    padding: 5px;
+    .one-gif {
+      align-items: center;
+      height: 220px;
+      margin: 5px 0 5px 0;
+      cursor: pointer;
+      outline: none;
+      .img-gif{
+        text-align: center;
+        img {
+          //max-width: 200px;
+          //max-height: 200px;
+        }
+      }
+    }
+  }
+}
