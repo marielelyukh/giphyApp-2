@@ -1,5 +1,8 @@
 $blue: #2196F3;
 $transition: 300ms ease;
+h3 {
+  color: #F54785;
+}
 .search-block {
   display: flex;
   flex-direction: row;
@@ -187,8 +190,9 @@ $transition: 300ms ease;
 
   }
 }
-h3 {
-  color: #F54785;
+.message{
+  color: red;
+  margin-top: 10px;
 }
 .custom-scroll {
   ::-webkit-scrollbar {

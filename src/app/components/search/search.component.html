@@ -8,6 +8,9 @@
     <button class="btn" (click)="searchGifs(searchText)"><span>Search</span></button>
   </div>
 </div>
+<div class="message" *ngIf="this.message">
+  {{this.message}}
+</div>
 <div *ngIf="allSearchGifs.length" class="custom-scroll">
   <h3>Result</h3>
   <div class="gifs-block">

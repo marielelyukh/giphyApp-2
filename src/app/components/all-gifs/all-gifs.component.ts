@@ -38,11 +38,11 @@ export class MainListComponent implements OnInit {
     let isAbsent = this.favsArray.some(function (item) {
       return item.id === gif.id;
     });
-    console.log(isAbsent);
+    // console.log(isAbsent, 'absent');
     if (!isAbsent) {
       this.favsArray.push(gif);
       gif.active = true;
-      console.log(gif)
+      // console.log(gif);
       this.localStorageService.set('favArray', this.favsArray);
     }
   }

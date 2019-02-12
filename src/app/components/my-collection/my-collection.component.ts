@@ -1,4 +1,7 @@
 import {Component, OnInit} from '@angular/core';
+import {LocalStorageService} from 'ngx-store';
+
+
 
 @Component({
   selector: 'app-my-collection',
@@ -7,10 +10,12 @@ import {Component, OnInit} from '@angular/core';
 })
 export class MyCollectionComponent implements OnInit {
   public imagePath;
-  imgURL: any;
+  public imgURL: any;
   public message: string;
+  public tmpArray: Array<any>;
 
-  constructor() {
+  constructor(private localStorageService: LocalStorageService) {
+    this.tmpArray = [];
   }
 
   ngOnInit() {
@@ -23,7 +28,6 @@ export class MyCollectionComponent implements OnInit {
 
     const mimeType = files[0].type;
     if (mimeType.match(/image\/*/) == null) {
-      this.message = 'Only images are supported.';
       return;
     }
 
@@ -32,6 +36,10 @@ export class MyCollectionComponent implements OnInit {
     reader.readAsDataURL(files[0]);
     reader.onload = (event) => {
       this.imgURL = reader.result;
+      this.tmpArray.push(reader.result);
+      this.localStorageService.set('myCollection', this.tmpArray);
+      this.message = 'Gif will appear in your collection on favorite page!';
+
     };
   }
 

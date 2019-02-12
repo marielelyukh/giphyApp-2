@@ -1,16 +1,31 @@
 <div>
-    <div>
-      <h3>Favorite gifs</h3>
-      <div class="gifs-block">
-        <div *ngFor="let gif of favGifs;" class="gifs-block__gifs">
-          <div class="gifs-block__gifs__one-gif">
-            <div class="img-gif">
-              <a routerLink="/details/{{gif?.id}}">
-                <img [src]="gif.images.fixed_width.webp">
-              </a>
-            </div>
+  <h3 *ngIf="!favGifs && !myGifCollection">There are no gifs here... You can add them from trendings or upload yourself</h3>
+  <div *ngIf="favGifs">
+    <h3>Favorite gifs</h3>
+    <div class="gifs-block">
+      <div *ngFor="let gif of favGifs;" class="gifs-block__gifs">
+        <div class="gifs-block__gifs__one-gif">
+          <div class="img-gif">
+            <a routerLink="/details/{{gif?.id}}">
+              <img [src]="gif.images.fixed_width.webp">
+            </a>
           </div>
         </div>
       </div>
     </div>
+  </div>
+  <div *ngIf="myGifCollection">
+    <h3>My collection</h3>
+    <div class="gifs-block">
+      <div *ngFor="let gif of myGifCollection;" class="gifs-block__gifs">
+        <div class="gifs-block__gifs__one-gif">
+          <div class="img-gif">
+            <a>
+              <img [src]="gif">
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>

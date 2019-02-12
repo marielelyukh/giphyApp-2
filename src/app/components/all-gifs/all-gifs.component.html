@@ -2,7 +2,7 @@
   <!--<app-search></app-search>-->
   <div class="custom-scroll">
     <h3>Trending gifs</h3>
-    <div class="gifs-block scroll" infiniteScroll [infiniteScrollDistance]="2"
+    <div *ngIf="allGifs" class="gifs-block scroll" infiniteScroll [infiniteScrollDistance]="2"
          [infiniteScrollThrottle]="50" (scrolled)="onScroll()" [scrollWindow]="false"
          style="">
       <div *ngFor="let gif of allGifs;" class="gifs-block__gifs">
