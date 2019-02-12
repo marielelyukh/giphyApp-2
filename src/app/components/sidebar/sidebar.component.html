@@ -1,19 +1,25 @@
 <nav>
   <ul>
     <li>
-      <a routerLink="main-list" routerLinkActive="activated" [routerLink]="'/all-gifs'">
+      <a  routerLinkActive="activated" [routerLink]="'/all-gifs'">
         <i class="material-icons">collections</i>
       </a>
     </li>
     <li>
-      <a routerLink="favorites" routerLinkActive="activated" [routerLink]="'/favorites'">
+      <a  routerLinkActive="activated" [routerLink]="'/search'">
+        <i class="material-icons">search</i>
+      </a>
+    </li>
+    <li>
+      <a  routerLinkActive="activated" [routerLink]="'/favorites'">
         <i class="material-icons">favorite</i>
       </a>
     </li>
     <li>
-      <a routerLink="favorites" routerLinkActive="activated" [routerLink]="'/my-collection'">
+      <a  routerLinkActive="activated" [routerLink]="'/my-collection'">
         <i class="material-icons">library_add</i>
       </a>
     </li>
+
   </ul>
 </nav>

@@ -30,12 +30,10 @@ export class MainListComponent implements OnInit {
       }
     );
   }
-
-  getMoreGifs() {
+  onScroll() {
     this.offset += 25;
     this.getGifs(this.offset);
   }
-
   addToFav(gif) {
     let isAbsent = this.favsArray.some(function (item) {
       return item.id === gif.id;

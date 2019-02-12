@@ -1,21 +1,23 @@
 <div>
-  <app-search></app-search>
-  <div>
+  <!--<app-search></app-search>-->
+  <div class="custom-scroll">
     <h3>Trending gifs</h3>
-    <div class="gifs-block">
+    <div class="gifs-block scroll" infiniteScroll [infiniteScrollDistance]="2"
+         [infiniteScrollThrottle]="50" (scrolled)="onScroll()" [scrollWindow]="false"
+         style="">
       <div *ngFor="let gif of allGifs;" class="gifs-block__gifs">
         <div class="gifs-block__gifs__one-gif">
+          <div class="action-block">
             <a routerLink="/details/{{gif?.id}}">
               <img [src]="gif.images.fixed_width.webp" style="position: relative; z-index: 1;">
             </a>
-          <div class="fav" *ngIf="gif" (click)="addToFav(gif)" [ngClass]="{'activated' : gif.active}">
-            <i class="material-icons">favorite</i>
+            <div class="fav" *ngIf="gif" (click)="addToFav(gif)" [ngClass]="{'activated' : gif.active}">
+              <i class="material-icons">favorite</i>
+            </div>
           </div>
         </div>
       </div>
     </div>
-    <div class="btn-block">
-      <button class="btn" (click)="getMoreGifs()"><span>Get more!</span></button>
-    </div>
+
   </div>
 </div>

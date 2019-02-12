@@ -14,8 +14,8 @@ export class GifService {
   getTrendingGifs(next: number): Observable<any> {
     return this.http.get(this.giphyUrl + '/trending?api_key=' + this.apiKey + '&offset=' + next);
   }
-  searchGifs(text): Observable<any> {
-    return this.http.get(this.giphyUrl + '/search?api_key=' + this.apiKey + '&q=' + text);
+  searchGifs(text, next: number): Observable<any> {
+    return this.http.get(this.giphyUrl + '/search?api_key=' + this.apiKey + '&q=' + text + '&offset=' + next);
   }
   getOneGif(id): Observable<any> {
     return this.http.get(this.giphyUrl + '/' + id + '?api_key=' + this.apiKey);
