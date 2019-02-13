@@ -2,12 +2,12 @@
   <div class="btn-block">
     <button class="btn" (click)="goBack()"><span>Go back</span></button>
   </div>
-  <div *ngIf="one_gif" class="gif-block">
+  <div *ngIf="oneGif" class="gif-block">
     <div class="gif-block__gif">
-      <img  [src]="one_gif.images.original.webp">
-      <h3><span>Name: </span>{{one_gif.title}}</h3>
-      <h5><span>Import time: </span> {{one_gif.import_datetime}}</h5>
-      <h5><span>Rating: </span> {{one_gif.rating}}</h5>
+      <img  [src]="oneGif.images.original.webp">
+      <h3><span>Name: </span>{{oneGif.title}}</h3>
+      <h5><span>Import time: </span> {{oneGif.import_datetime}}</h5>
+      <h5><span>Rating: </span> {{oneGif.rating}}</h5>
     </div>
   </div>
 </div>

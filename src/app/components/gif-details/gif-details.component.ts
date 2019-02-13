@@ -10,9 +10,9 @@ import { GifService } from '../../services/gif.service';
   styleUrls: ['./gif-details.component.scss']
 })
 export class GifDetailsComponent implements OnInit {
-  private one_gif: any;
+  private oneGif: any;
 
-  constructor( private route: ActivatedRoute, private http: GifService, private location: Location) { }
+  constructor( private route: ActivatedRoute, private gifService: GifService, private location: Location) { }
 
   ngOnInit() {
     this.getGif();
@@ -21,9 +21,9 @@ export class GifDetailsComponent implements OnInit {
   getGif() {
     const id = this.route.snapshot.paramMap.get('id');
     console.log(id);
-    this.http.getOneGif(id).subscribe(
+    this.gifService.getOneGif(id).subscribe(
       data => {
-        this.one_gif = data.data;
+        this.oneGif = data.data;
       }
     );
   }

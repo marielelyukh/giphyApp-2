@@ -1,6 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {LocalStorageService} from 'ngx-store';
-
+import {FormGroup, FormControl, FormBuilder} from '@angular/forms';
+import {GifService} from '../../services/gif.service';
 
 
 @Component({
@@ -9,39 +10,37 @@ import {LocalStorageService} from 'ngx-store';
   styleUrls: ['./my-collection.component.scss']
 })
 export class MyCollectionComponent implements OnInit {
-  public imagePath;
-  public imgURL: any;
-  public message: string;
   public tmpArray: Array<any>;
+  public tags: string;
+  public tmpFIleName: string;
+  public typeMessage: string;
+  fileToUpload: File = null;
 
-  constructor(private localStorageService: LocalStorageService) {
+
+  constructor(private localStorageService: LocalStorageService, private fb: FormBuilder, private gifService: GifService) {
     this.tmpArray = [];
   }
 
   ngOnInit() {
   }
 
-  preview(files) {
-    if (files.length === 0) {
-      return;
-    }
+  upload() {
+    this.gifService.uploadToGiphy(this.fileToUpload, this.tags).subscribe(
+      (data) => {
+        this.localStorageService.set('uploadedGifId', data.data.id);
+        console.log(this.localStorageService.set('uploadedGifId', data.data.id));
+      }
+    );
+  }
 
+  handleFileInput(files: FileList) {
     const mimeType = files[0].type;
     if (mimeType.match(/image\/gif/) == null) {
-      this.message = 'Please upload only gif image.';
+      this.typeMessage = 'Only images are supported';
       return;
     }
-
-    const reader = new FileReader();
-    this.imagePath = files;
-    reader.readAsDataURL(files[0]);
-    reader.onload = (event) => {
-      this.imgURL = reader.result;
-      this.tmpArray.push(reader.result);
-      this.localStorageService.set('myCollection', this.tmpArray);
-      this.message = 'Gif will appear in your collection on favorite page!';
-
-    };
-  }
+    this.fileToUpload = files.item(0);
+    this.tmpFIleName = files.item(0).name;
+    }
 
 }

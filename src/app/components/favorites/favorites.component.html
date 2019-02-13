@@ -14,14 +14,14 @@
       </div>
     </div>
   </div>
-  <div *ngIf="myGifCollection">
+  <div *ngIf="myGif">
     <h3>My collection</h3>
     <div class="gifs-block">
-      <div *ngFor="let gif of myGifCollection;" class="gifs-block__gifs">
+      <div class="gifs-block__gifs">
         <div class="gifs-block__gifs__one-gif">
           <div class="img-gif">
             <a>
-              <img [src]="gif">
+              <img [src]="myGif.images.original.url">
             </a>
           </div>
         </div>

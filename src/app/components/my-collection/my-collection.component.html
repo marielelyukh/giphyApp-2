@@ -1,18 +1,28 @@
 <div>
-  <div class="upload-block">
-    <div class="upload-block__top-gif">
+  <div class="top">
+    <div class="top__title">
+      <h3>Upload your gif to Giphy!</h3>
+    </div>
+    <div class="top__gif">
       <img src="assets/giphy.gif">
     </div>
+  </div>
+  <div class="upload-block">
+    <mat-form-field class="example-full-width">
+      <label>Add tags</label>
+      <input matInput [(ngModel)]="tags" type="text">
+      <mat-hint align="start"><strong>A comma delimited list of tags to be applied to the upload</strong></mat-hint>
+    </mat-form-field>
+
     <div class="upload-block__upload">
-      <label id="#bb"> Upload your gif!
-        <input #file type="file" accept="image/gif" (change)="preview(file.files)" />
+      <label id="#bb"> Upload gif
+        <span *ngIf="tmpFIleName">{{tmpFIleName}}</span>
+        <span *ngIf="this.typeMessage && !tmpFIleName">{{this.typeMessage}}</span>
+        <input #file type="file" accept="image/gif" (change)="handleFileInput($event.target.files)"/>
       </label>
-      <div class="upload-block__result-prev">
-        <img [src]="imgURL" *ngIf="imgURL">
-      </div>
-      <div class="message" *ngIf="message">
-        {{message}}
-      </div>
     </div>
+  </div>
+  <div class="btn-block" *ngIf="tags && fileToUpload">
+    <button (click)="upload()">Send gif</button>
   </div>
 </div>
