@@ -1,23 +1,24 @@
 <div class="search-block">
   <div class="search-block__input-wrapper empty">
     <label>
-      <input [(ngModel)]="searchText" type="text" class="query"/>
+      <input (ngModelChange)="searchNewGifs(searchText, offset)" [(ngModel)]="searchText" type="text" class="query"/>
     </label>
   </div>
   <div class="search-block__btn-block">
-    <button class="btn" (click)="searchGifs(searchText)"><span>Search</span></button>
+    <button class="btn" (click)="searchNewGifs(searchText, offset)"><span>Search</span></button>
   </div>
 </div>
-<div class="message" *ngIf="this.message">
-  {{this.message}}
+<div class="message" *ngIf="message">
+  {{message}}
 </div>
-<div *ngIf="allSearchGifs.length" class="custom-scroll">
+<div class="custom-scroll" *ngIf="allSearchGifs.length">
   <h3>Result</h3>
-  <div class="gifs-block">
+  <div class="gifs-block" infiniteScroll
+       [infiniteScrollThrottle]="50" (scrolled)="onScroll()" [scrollWindow]="false">
     <div *ngFor="let gif of allSearchGifs;" class="gifs-block__gifs">
       <div class="gifs-block__gifs__one-gif">
         <div class="action-block">
-          <a routerLink="/details/{{gif?.id}}">
+          <a (click)="openDialog(gif)">
             <img [src]="gif.images.fixed_width.webp" style="position: relative; z-index: 1;">
           </a>
           <div class="fav" *ngIf="gif" (click)="addToFav(gif)" [ngClass]="{'activated' : gif.active}">
@@ -26,9 +27,6 @@
         </div>
       </div>
     </div>
-  </div>
-  <div class="btn-block">
-    <button class="btn" (click)="getMoreGifs()"><span>Get more!</span></button>
   </div>
 </div>
 

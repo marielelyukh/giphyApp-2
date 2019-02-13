@@ -1,0 +1,19 @@
+<div class="header-block">
+  <div class="header-block__close" (click)="close()">
+    <i class="material-icons">close</i>
+  </div>
+  <h2 mat-dialog-title>{{gif.title}}</h2>
+</div>
+<div mat-dialog-content>
+  <div>
+    <img [src]="gif.images.original.url">
+  </div>
+</div>
+<div mat-dialog-actions>
+  <button (click)="close()" routerLink="/details/{{gif?.id}}" mat-button>View details</button>
+</div>
+
+
+
+
+

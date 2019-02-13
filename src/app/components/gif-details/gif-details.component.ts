@@ -28,4 +28,9 @@ export class GifDetailsComponent implements OnInit {
     );
   }
 
+  goBack() {
+    this.location.back();
+  }
+
+
 }

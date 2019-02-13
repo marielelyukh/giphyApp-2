@@ -1,6 +1,8 @@
 import {Component, OnInit} from '@angular/core';
 import {GifService} from '../../services/gif.service';
 import {LocalStorageService} from 'ngx-store';
+import {MatDialog, MatDialogConfig, MAT_DIALOG_DATA} from '@angular/material';
+import {GifDialogComponent} from '../gif-dialog/gif-dialog.component';
 
 @Component({
   selector: 'app-search',
@@ -16,19 +18,31 @@ export class SearchComponent implements OnInit {
   public favsArray: Array<any> = [];
 
 
-  constructor(private gifService: GifService, private localStorageService: LocalStorageService) {
-    this.offset = 0;
+  constructor(private gifService: GifService, private localStorageService: LocalStorageService, public dialog: MatDialog) {
+    this.offset = 25;
   }
 
   ngOnInit() {
   }
 
-  searchGifs(searchText, more: number) {
+  searchNewGifs(searchText, offset) {
+    this.allSearchGifs = [];
     if (!searchText) {
       this.message = 'Please fill search input.';
       return;
     }
-    this.gifService.searchGifs(searchText, more).subscribe(
+    this.gifService.searchGifs(searchText, offset).subscribe(
+      (data) => {
+        this.searchResult = data;
+        this.allSearchGifs = this.allSearchGifs.concat(data.data);
+        this.message = '';
+      }
+    );
+  }
+
+
+  getMoreSame(searchText, offset) {
+    this.gifService.searchGifs(searchText, offset).subscribe(
       (data) => {
         this.searchResult = data;
         this.allSearchGifs = this.allSearchGifs.concat(this.searchResult.data);
@@ -37,10 +51,28 @@ export class SearchComponent implements OnInit {
     );
   }
 
-  getMoreGifs() {
+  onScroll() {
     this.offset += 25;
-    this.searchGifs(this.searchText, this.offset);
+    console.log(this.offset);
+    this.getMoreSame(this.searchText, this.offset);
   }
+
+  openDialog(gif) {
+    const dialogConfig = new MatDialogConfig();
+    dialogConfig.disableClose = true;
+    dialogConfig.autoFocus = true;
+    dialogConfig.data = {
+      gif
+    };
+    const dialogRef = this.dialog.open(GifDialogComponent,
+      dialogConfig);
+
+
+    dialogRef.afterClosed().subscribe(
+      res => console.log('Dialog output:', res)
+    );
+  }
+
 
   addToFav(gif) {
     let isAbsent = this.favsArray.some(function (item) {

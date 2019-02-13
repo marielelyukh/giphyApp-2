@@ -1,6 +1,5 @@
-import { Component, OnInit } from '@angular/core';
-import { LocalStorageService } from 'ngx-store';
-
+import {Component, OnInit} from '@angular/core';
+import {LocalStorageService} from 'ngx-store';
 
 @Component({
   selector: 'app-favorites',
@@ -11,7 +10,8 @@ export class FavoritesComponent implements OnInit {
   public favGifs: Array<any> = [];
   public myGifCollection: Array<any> = [];
 
-  constructor(private localStorageService: LocalStorageService) { }
+  constructor(private localStorageService: LocalStorageService) {
+  }
 
   ngOnInit() {
     // console.log(this.localStorageService.get('favArray'));
@@ -19,5 +19,6 @@ export class FavoritesComponent implements OnInit {
     this.myGifCollection = this.localStorageService.get('myCollection');
 
   }
+
 
 }

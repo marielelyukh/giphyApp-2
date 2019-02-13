@@ -5,7 +5,7 @@
     </div>
     <div class="upload-block__upload">
       <label id="#bb"> Upload your gif!
-        <input #file type="file" accept='image/*' (change)="preview(file.files)" />
+        <input #file type="file" accept="image/gif" (change)="preview(file.files)" />
       </label>
       <div class="upload-block__result-prev">
         <img [src]="imgURL" *ngIf="imgURL">

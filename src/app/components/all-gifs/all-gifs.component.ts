@@ -1,6 +1,8 @@
 import {Component, OnInit, ViewChild} from '@angular/core';
 import {GifService} from '../../services/gif.service';
 import {LocalStorageService} from 'ngx-store';
+import {MatDialog, MatDialogConfig, MAT_DIALOG_DATA} from '@angular/material';
+import {GifDialogComponent} from '../gif-dialog/gif-dialog.component';
 
 @Component({
   selector: 'app-all-gifs',
@@ -13,27 +15,44 @@ export class MainListComponent implements OnInit {
   public favsArray: Array<any> = [];
   public offset: number;
 
-  constructor(private gifService: GifService, private localStorageService: LocalStorageService) {
-    this.offset = 0;
+  constructor(private gifService: GifService, private localStorageService: LocalStorageService, public dialog: MatDialog) {
+    this.offset = 25;
   }
 
   ngOnInit() {
     this.getGifs(this.offset);
-
   }
 
-  getGifs(more: number) {
-    this.gifService.getTrendingGifs(more).subscribe(
+  getGifs(offset: number) {
+    this.gifService.getTrendingGifs(offset).subscribe(
       (data) => {
         this.result = data;
         this.allGifs = this.allGifs.concat(this.result.data);
       }
     );
   }
+
   onScroll() {
     this.offset += 25;
     this.getGifs(this.offset);
   }
+
+  openDialog(gif) {
+    const dialogConfig = new MatDialogConfig();
+    dialogConfig.disableClose = true;
+    dialogConfig.autoFocus = true;
+    dialogConfig.data = {
+      gif
+    };
+    const dialogRef = this.dialog.open(GifDialogComponent,
+      dialogConfig);
+
+
+    dialogRef.afterClosed().subscribe(
+      res => console.log('Dialog output:', res)
+    );
+  }
+
   addToFav(gif) {
     let isAbsent = this.favsArray.some(function (item) {
       return item.id === gif.id;

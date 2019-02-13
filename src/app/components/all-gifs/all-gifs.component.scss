@@ -26,7 +26,7 @@ h3 {
   flex-wrap: wrap;
   align-items: flex-start;
   width: 100%;
-  height: 700px;
+    height: 700px;
   overflow-y: scroll;
   .gifs-block__gifs {
     //margin: auto;
@@ -61,14 +61,13 @@ h3 {
       i {
         color: white;
         opacity: 0.6;
+        margin: 0 5px 0 5px;
+        outline: none;
       }
-
     }
     .activated {
-      i {
         color: #F54785 !important;
-        opacity: 1;
-      }
+        opacity: 0.9;
     }
   }
 }

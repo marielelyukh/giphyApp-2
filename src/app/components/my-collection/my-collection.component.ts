@@ -27,7 +27,8 @@ export class MyCollectionComponent implements OnInit {
     }
 
     const mimeType = files[0].type;
-    if (mimeType.match(/image\/*/) == null) {
+    if (mimeType.match(/image\/gif/) == null) {
+      this.message = 'Please upload only gif image.';
       return;
     }
 
