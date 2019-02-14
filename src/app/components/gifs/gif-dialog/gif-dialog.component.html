@@ -8,8 +8,10 @@
   <div class="gif-img">
     <img [src]="gif.images.original.url">
   </div>
+</div>
+<div mat-dialog-actions>
   <div *ngIf="gif.title">
-    <a (click)="close()">View details</a>
+    <a (click)="viewDetails()">View details</a>
   </div>
 </div>
 

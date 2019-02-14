@@ -11,9 +11,8 @@ import {Router} from '@angular/router';
 export class GifDialogComponent implements OnInit {
   public gif: any;
 
-  constructor(
-    private router: Router,
-    private dialogRef: MatDialogRef<GifDialogComponent>, @Inject(MAT_DIALOG_DATA) {gif}) {
+  constructor(private router: Router,
+              private dialogRef: MatDialogRef<GifDialogComponent>, @Inject(MAT_DIALOG_DATA) {gif}) {
     this.gif = gif;
     console.log(gif);
   }
@@ -21,8 +20,13 @@ export class GifDialogComponent implements OnInit {
   ngOnInit() {
   }
 
-  close() {
+  viewDetails() {
     this.router.navigate(['gifs/details', this.gif['id']]);
+    this.dialogRef.close();
+
+  }
+
+  close() {
     this.dialogRef.close();
   }
 

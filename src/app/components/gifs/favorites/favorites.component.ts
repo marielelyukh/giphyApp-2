@@ -14,7 +14,6 @@ import {GifDialogComponent} from '../gif-dialog/gif-dialog.component';
 export class FavoritesComponent implements OnInit {
   public favGifs: Array<any>;
   public myGifs: Array<any>;
-  public gifId: string;
   public gifsIdsArray: Array<any>;
   public gifsIdsString: string;
 
@@ -23,10 +22,12 @@ export class FavoritesComponent implements OnInit {
 
   ngOnInit() {
     this.favGifs = this.localStorageService.get('favArray');
-    this.gifsIdsArray = this.localStorageService.get('uploadedGifsIds');
-    this.gifsIdsString = this.gifsIdsArray.join();
-    this.gifId = this.localStorageService.get('uploadedGifId');
-    this.getGifs();
+    if (this.localStorageService.get('uploadedGifsIds')) {
+      this.gifsIdsArray = this.localStorageService.get('uploadedGifsIds');
+      this.gifsIdsString = this.gifsIdsArray.join();
+      this.getGifs();
+    }
+
   }
 
   getGifs() {

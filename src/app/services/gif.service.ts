@@ -11,8 +11,8 @@ const httpOptions = {
 @Injectable()
 export class GifService {
   private giphyUrl = 'http://api.giphy.com/v1/gifs';
-  private apiKey = 'ZjjYDvNIw8uMALqpNLKAFwxihghIZRjy';
-  private createUrl = 'http://upload.giphy.com/v1/gifs?api_key=ZjjYDvNIw8uMALqpNLKAFwxihghIZRjy';
+  private apiKey = 'dQHtLzgVyc8XFUVTmScclsMIXl4IAX8d';
+  private createUrl = 'http://upload.giphy.com/v1/gifs?api_key=dQHtLzgVyc8XFUVTmScclsMIXl4IAX8d';
 
   constructor(public http: HttpClient) {
   }
