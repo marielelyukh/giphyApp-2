@@ -30,10 +30,16 @@ export class GifService {
     return this.http.get(this.giphyUrl + '/' + id + '?api_key=' + this.apiKey);
   }
 
-  uploadToGiphy(fileToUpload, tags): Observable<any> {
+  getGifsById(ids): Observable<any> {
+    return this.http.get(this.giphyUrl + '?api_key=' + this.apiKey + '&ids=' + ids);
+  }
+
+  uploadToGiphy(fileToUpload, tags, title): Observable<any> {
     const formData: FormData = new FormData();
     formData.append('file', fileToUpload);
     formData.append('tags', tags);
+    formData.append('title', title);
+
     // formData.append('source_post_url', 'http://www.mysite.com/my-blog-post/');
     // formData.append('type', 'gif');
     return this.http.post(this.createUrl, formData, httpOptions);

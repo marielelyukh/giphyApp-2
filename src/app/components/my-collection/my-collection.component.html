@@ -13,6 +13,11 @@
       <input matInput [(ngModel)]="tags" type="text">
       <mat-hint align="start"><strong>A comma delimited list of tags to be applied to the upload</strong></mat-hint>
     </mat-form-field>
+    <mat-form-field class="example-full-width">
+      <label>Add title</label>
+      <input matInput [(ngModel)]="title" type="text">
+      <mat-hint align="start"><strong>Name your gif</strong></mat-hint>
+    </mat-form-field>
 
     <div class="upload-block__upload">
       <label id="#bb"> Upload gif

@@ -2,15 +2,15 @@
   <div class="header-block__close" (click)="close()">
     <i class="material-icons">close</i>
   </div>
-  <h2 mat-dialog-title>{{gif.title}}</h2>
+  <h2 *ngIf="gif.title" mat-dialog-title>{{gif.title}}</h2>
 </div>
 <div mat-dialog-content>
-  <div>
+  <div class="gif-img">
     <img [src]="gif.images.original.url">
   </div>
-</div>
-<div mat-dialog-actions>
-  <button (click)="close()" routerLink="/details/{{gif?.id}}" mat-button>View details</button>
+  <div *ngIf="gif.title">
+    <a  (click)="close()" routerLink="/details/{{gif?.id}}">View details</a>
+  </div>
 </div>
 
 

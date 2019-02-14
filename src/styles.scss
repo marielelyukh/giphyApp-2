@@ -1,4 +1,7 @@
 @import '~@angular/material/prebuilt-themes/pink-bluegrey.css';
+::-webkit-scrollbar {
+  display: none;
+}
 body {
   margin: 0;
   background: #36383F;
@@ -10,9 +13,11 @@ body {
   display: grid;
   grid-template-columns: 70px auto;
   height: 100%;
+  -ms-overflow-style: none;  // IE 10+
+  overflow: -moz-scrollbars-none;  // Firefox
 
   #content {
-    padding: 30px 50px;
+    padding: 30px 10px;
 
     ul {
       list-style-type: none;

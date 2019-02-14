@@ -12,23 +12,32 @@ import {GifService} from '../../services/gif.service';
 export class MyCollectionComponent implements OnInit {
   public tmpArray: Array<any>;
   public tags: string;
+  public title: string;
   public tmpFIleName: string;
   public typeMessage: string;
+  public uploadedGifs: Array<any>;
   fileToUpload: File = null;
 
 
   constructor(private localStorageService: LocalStorageService, private fb: FormBuilder, private gifService: GifService) {
     this.tmpArray = [];
+    if (this.localStorageService.get('uploadedGifsIds')) {
+      this.uploadedGifs = this.localStorageService.get('uploadedGifsIds');
+    } else {
+      this.uploadedGifs = [];
+    }
   }
 
   ngOnInit() {
   }
 
   upload() {
-    this.gifService.uploadToGiphy(this.fileToUpload, this.tags).subscribe(
+    this.gifService.uploadToGiphy(this.fileToUpload, this.tags, this.title).subscribe(
       (data) => {
-        this.localStorageService.set('uploadedGifId', data.data.id);
-        console.log(this.localStorageService.set('uploadedGifId', data.data.id));
+        console.log(this.uploadedGifs);
+        this.uploadedGifs.push(data.data.id);
+        this.localStorageService.set('uploadedGifsIds', this.uploadedGifs);
+        console.log(this.localStorageService.get('uploadedGifsIds'));
       }
     );
   }

@@ -11,6 +11,16 @@ i{
     float: right;
   }
 }
-button{
+.gif-img{
+  padding: 10px;
+  img {
+    max-width: 90%;
+    max-height: 90%;
+
+  }
+}
+a{
   color: #F54785;
+  outline: none;
+  text-decoration: none;
 }

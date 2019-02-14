@@ -1,12 +1,12 @@
 <div class="search-block">
   <div class="search-block__input-wrapper empty">
     <label>
-      <input (ngModelChange)="searchNewGifs(searchText, offset)" [(ngModel)]="searchText" type="text" class="query"/>
+      <input (ngModelChange)="searchNewGifs(searchText, offset)" placeholder="Search gifs" [(ngModel)]="searchText" type="text" class="query"/>
     </label>
   </div>
-  <div class="search-block__btn-block">
-    <button class="btn" (click)="searchNewGifs(searchText, offset)"><span>Search</span></button>
-  </div>
+  <!--<div class="search-block__btn-block">-->
+    <!--<button class="btn" (click)="searchNewGifs(searchText, offset)"><span>Search</span></button>-->
+  <!--</div>-->
 </div>
 <div class="message" *ngIf="message">
   {{message}}
