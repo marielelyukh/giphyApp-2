@@ -1,5 +1,7 @@
-import { Component, OnInit } from '@angular/core';
-import { Router, NavigationEnd } from '@angular/router';
+import {Component, OnInit} from '@angular/core';
+import {Router, NavigationEnd} from '@angular/router';
+import {LocalStorageService} from 'ngx-store';
+
 
 @Component({
   selector: 'app-sidebar',
@@ -8,11 +10,17 @@ import { Router, NavigationEnd } from '@angular/router';
 })
 export class SidebarComponent implements OnInit {
   currentUrl: string;
-  constructor(private router: Router) {
+
+  constructor(private router: Router, private localStorageService: LocalStorageService) {
     router.events.subscribe((_: NavigationEnd) => this.currentUrl = _.url);
   }
 
   ngOnInit() {
+  }
+
+  logout() {
+    localStorage.removeItem('isUser');
+    this.router.navigate(['/login']);
   }
 
 }

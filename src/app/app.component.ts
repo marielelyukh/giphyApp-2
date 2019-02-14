@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {LocalStorageService} from 'ngx-store';
+import { LocalStorageService } from 'ngx-store';
 
 
 @Component({

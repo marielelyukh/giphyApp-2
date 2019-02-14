@@ -32,6 +32,7 @@ export class LoginComponent implements OnInit {
     } else if (user.username !== 'user' || user.password !== '111111') {
       this.emptyFields = '';
       this.wrongData = 'Your data is wrong.';
+      return;
     }
     console.log('kek');
     this.localStorageService.set('isUser', true);
