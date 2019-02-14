@@ -29,5 +29,6 @@
   </div>
   <div class="btn-block" *ngIf="tags && fileToUpload">
     <button (click)="upload()">Send gif</button>
+    <h3>{{this.successMessage}}</h3>
   </div>
 </div>

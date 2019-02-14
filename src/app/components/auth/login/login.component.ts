@@ -1,7 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {LocalStorageService} from 'ngx-store';
-import { Router, ActivatedRoute } from '@angular/router';
-
+import {Router, ActivatedRoute} from '@angular/router';
 
 
 @Component({
@@ -36,7 +35,7 @@ export class LoginComponent implements OnInit {
     }
     console.log('kek');
     this.localStorageService.set('isUser', true);
-    this.router.navigate(['/all-gifs']);
+    this.router.navigate(['../../gifs/all-gifs']);
   }
 
 }

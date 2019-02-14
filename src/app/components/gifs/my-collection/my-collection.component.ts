@@ -1,7 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {LocalStorageService} from 'ngx-store';
 import {FormGroup, FormControl, FormBuilder} from '@angular/forms';
-import {GifService} from '../../services/gif.service';
+import {GifService} from '../../../services/gif.service';
 
 
 @Component({
@@ -15,6 +15,7 @@ export class MyCollectionComponent implements OnInit {
   public title: string;
   public tmpFIleName: string;
   public typeMessage: string;
+  public successMessage: string;
   public uploadedGifs: Array<any>;
   fileToUpload: File = null;
 
@@ -38,6 +39,7 @@ export class MyCollectionComponent implements OnInit {
         this.uploadedGifs.push(data.data.id);
         this.localStorageService.set('uploadedGifsIds', this.uploadedGifs);
         console.log(this.localStorageService.get('uploadedGifsIds'));
+        this.successMessage = 'Gif was successfully uploaded, you can find it in your collection';
       }
     );
   }

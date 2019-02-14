@@ -7,7 +7,7 @@
       <img  [src]="oneGif.images.original.webp">
       <h3><span>Name: </span>{{oneGif.title}}</h3>
       <h5><span>Import time: </span> {{oneGif.import_datetime}}</h5>
-      <h5><span>Rating: </span> {{oneGif.rating}}</h5>
+      <h5 *ngIf="oneGif.rating"><span>Rating: </span> {{oneGif.rating}}</h5>
     </div>
   </div>
 </div>

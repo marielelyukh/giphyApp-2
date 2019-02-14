@@ -1,6 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {LocalStorageService} from 'ngx-store';
-import { GifService } from '../../services/gif.service';
+import { GifService } from '../../../services/gif.service';
 import {MatDialog, MatDialogConfig, MAT_DIALOG_DATA} from '@angular/material';
 import {GifDialogComponent} from '../gif-dialog/gif-dialog.component';
 

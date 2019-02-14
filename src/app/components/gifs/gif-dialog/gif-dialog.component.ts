@@ -1,5 +1,6 @@
 import {Component, OnInit, Inject} from '@angular/core';
 import {MAT_DIALOG_DATA, MatDialogRef} from '@angular/material';
+import {Router} from '@angular/router';
 
 
 @Component({
@@ -10,7 +11,9 @@ import {MAT_DIALOG_DATA, MatDialogRef} from '@angular/material';
 export class GifDialogComponent implements OnInit {
   public gif: any;
 
-  constructor(private dialogRef: MatDialogRef<GifDialogComponent>, @Inject(MAT_DIALOG_DATA) {gif}) {
+  constructor(
+    private router: Router,
+    private dialogRef: MatDialogRef<GifDialogComponent>, @Inject(MAT_DIALOG_DATA) {gif}) {
     this.gif = gif;
     console.log(gif);
   }
@@ -19,6 +22,7 @@ export class GifDialogComponent implements OnInit {
   }
 
   close() {
+    this.router.navigate(['gifs/details', this.gif['id']]);
     this.dialogRef.close();
   }
 

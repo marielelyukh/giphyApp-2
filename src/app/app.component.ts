@@ -1,5 +1,4 @@
-import { Component, OnInit } from '@angular/core';
-import { LocalStorageService } from 'ngx-store';
+import { Component } from '@angular/core';
 
 
 @Component({
@@ -7,15 +6,7 @@ import { LocalStorageService } from 'ngx-store';
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss']
 })
-export class AppComponent implements OnInit {
+export class AppComponent {
   title = 'app';
-  currentUser: boolean;
-
-  constructor(private localStorageService: LocalStorageService) {
-    this.currentUser = this.localStorageService.get('isUser');
-  }
-
-  ngOnInit() {
-  }
 
 }

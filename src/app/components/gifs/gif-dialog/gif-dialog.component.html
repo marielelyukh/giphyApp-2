@@ -9,7 +9,7 @@
     <img [src]="gif.images.original.url">
   </div>
   <div *ngIf="gif.title">
-    <a  (click)="close()" routerLink="/details/{{gif?.id}}">View details</a>
+    <a (click)="close()">View details</a>
   </div>
 </div>
 

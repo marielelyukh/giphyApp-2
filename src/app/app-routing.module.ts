@@ -1,23 +1,12 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 
-import { MainListComponent } from './components/all-gifs/all-gifs.component';
-import { FavoritesComponent } from './components/favorites/favorites.component';
-import { GifDetailsComponent} from './components/gif-details/gif-details.component';
-import { MyCollectionComponent } from './components/my-collection/my-collection.component';
-import { SearchComponent } from './components/search/search.component';
-import { LoginComponent } from './components/login/login.component';
-
 const routes: Routes = [
-  {path: '', redirectTo: 'login', pathMatch: 'full'},
-  {path: 'all-gifs', component: MainListComponent},
-  {path: 'search', component: SearchComponent},
-  {path: 'favorites', component: FavoritesComponent },
-  {path: 'details/:id' , component: GifDetailsComponent},
-  {path: 'my-collection' , component: MyCollectionComponent},
-  {path: 'login', component: LoginComponent},
-  {path: '**', component: MainListComponent}
+  { path: '', redirectTo: 'auth', pathMatch: 'full' },
+  { path: 'gifs', loadChildren: './components/gifs/gifs.module#GifsModule' },
+  { path: 'auth', loadChildren: './components/auth/auth.module#AuthModule' }
 ];
+
 
 @NgModule({
   imports: [ RouterModule.forRoot(routes) ],
