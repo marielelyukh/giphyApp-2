@@ -1,6 +1,7 @@
 import {Injectable} from '@angular/core';
 import {HttpClient, HttpHeaders} from '@angular/common/http';
-import {Observable} from 'rxjs/index';
+import {Observable, of} from 'rxjs/index';
+import {catchError, map, tap, debounceTime} from 'rxjs/operators';
 
 const httpOptions = {
   headers: new HttpHeaders({
@@ -18,11 +19,29 @@ export class GifService {
   }
 
   getTrendingGifs(next: number): Observable<any> {
-    return this.http.get(this.giphyUrl + '/trending?api_key=' + this.apiKey + '&offset=' + next);
+    if (next >= 25) {
+      return this.http.get(this.giphyUrl + '/trending?api_key=' + this.apiKey + '&offset=' + next);
+    } else {
+      return this.http.get(this.giphyUrl + '/trending?api_key=' + this.apiKey);
+    }
   }
 
-  searchGifs(text, next: number): Observable<any> {
-    return this.http.get(this.giphyUrl + '/search?api_key=' + this.apiKey + '&q=' + text + '&offset=' + next);
+  searchGifs(text, next = 0): Observable<any> {
+    if (next >= 25) {
+      if (!text.trim()) {
+        return of([]);
+      }
+      return this.http.get(this.giphyUrl + '/search?api_key=' + this.apiKey + '&q=' + text + '&offset=' + next).pipe(
+        tap(_ => console.log(`found gifs matching "${text}"`)),
+      );
+    } else {
+      if (!text.trim()) {
+        return of([]);
+      }
+      return this.http.get(this.giphyUrl + '/search?api_key=' + this.apiKey + '&q=' + text).pipe(
+        tap(_ => console.log(`found gifs matching "${text}"`)),
+      );
+    }
   }
 
   getOneGif(id): Observable<any> {
@@ -38,9 +57,6 @@ export class GifService {
     formData.append('file', fileToUpload);
     formData.append('tags', tags);
     formData.append('title', title);
-
-    // formData.append('source_post_url', 'http://www.mysite.com/my-blog-post/');
-    // formData.append('type', 'gif');
     return this.http.post(this.createUrl, formData, httpOptions);
   }
 

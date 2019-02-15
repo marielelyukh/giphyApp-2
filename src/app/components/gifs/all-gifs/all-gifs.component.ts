@@ -16,7 +16,7 @@ export class MainListComponent implements OnInit {
   public offset: number;
 
   constructor(private gifService: GifService, private localStorageService: LocalStorageService, public dialog: MatDialog) {
-    this.offset = 25;
+    this.offset = 0;
   }
 
   ngOnInit() {

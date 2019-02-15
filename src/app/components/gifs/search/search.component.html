@@ -1,21 +1,20 @@
 <div class="search-block">
   <div class="search-block__input-wrapper empty">
     <label>
-      <input (ngModelChange)="searchNewGifs(searchText, offset)" placeholder="Search gifs" [(ngModel)]="searchText" type="text" class="query"/>
+      <input #searchBox  placeholder="Search gifs" class="query" [(ngModel)]="text"/>
     </label>
   </div>
-  <!--<div class="search-block__btn-block">-->
-    <!--<button class="btn" (click)="searchNewGifs(searchText, offset)"><span>Search</span></button>-->
-  <!--</div>-->
+
 </div>
 <div class="message" *ngIf="message">
   {{message}}
 </div>
-<div class="custom-scroll" *ngIf="allSearchGifs.length">
-  <h3>Result</h3>
+<div class="custom-scroll" *ngIf="allSearchGifs">
+  <span *ngIf="!allSearchGifs.length" class="message">there are no result for this query...</span>
+  <h3 *ngIf="allSearchGifs.length">Result</h3>
   <div class="gifs-block" infiniteScroll
        [infiniteScrollThrottle]="50" (scrolled)="onScroll()" [scrollWindow]="false">
-    <div *ngFor="let gif of allSearchGifs;" class="gifs-block__gifs">
+    <div *ngFor="let gif of allSearchGifs " class="gifs-block__gifs">
       <div class="gifs-block__gifs__one-gif">
         <div class="action-block">
           <a (click)="openDialog(gif)">

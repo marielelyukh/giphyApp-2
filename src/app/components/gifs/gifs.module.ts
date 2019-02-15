@@ -7,6 +7,7 @@ import {WebStorageModule} from 'ngx-store';
 import {MatDialogModule, MatCardModule, MatInputModule, MatListModule, MatToolbarModule} from '@angular/material';
 import {MatButtonModule} from '@angular/material/button';
 import {ReactiveFormsModule} from '@angular/forms';
+import {MatAutocompleteModule} from '@angular/material/autocomplete';
 
 import { GifService} from '../../services/gif.service';
 
@@ -36,7 +37,8 @@ import {GifDialogComponent} from './gif-dialog/gif-dialog.component';
     MatInputModule,
     MatListModule,
     MatToolbarModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    MatAutocompleteModule
   ],
   declarations: [
     GifsComponent,
